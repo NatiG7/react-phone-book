@@ -1,0 +1,15 @@
+.header {
+  padding: 1.5rem;
+  background-color: var(--bg-panel);
+  border-bottom: 2px solid var(--htb-green); /* Neon underline */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.title {
+  margin: 0;
+  color: var(--htb-green);
+  text-shadow: 0 0 10px rgba(159, 239, 0, 0.3); /* Slight glow */
+  font-size: 1.8rem;
+}

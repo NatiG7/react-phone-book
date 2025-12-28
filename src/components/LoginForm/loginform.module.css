@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.toggleBtn {
+  position: absolute;
+  right: 10px;
+  top: 38px; /* Aligns with Input height */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--aws-orange);
+  padding: 0;
+  z-index: 10;
+}
+
+.toggleBtn:hover {
+  text-shadow: 0 0 8px var(--aws-orange);
+}

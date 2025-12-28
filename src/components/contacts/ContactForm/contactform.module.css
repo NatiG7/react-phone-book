@@ -1,0 +1,60 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+}
+
+.saveBtn {
+  background-color: var(--htb-green);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cancelBtn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--text-muted);
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.cancelBtn:hover {
+  color: white;
+  border-color: white;
+}
+
+/* Custom Select Styling */
+.selectLabel {
+  color: var(--htb-green);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.selectInput {
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid #333;
+  color: var(--aws-orange);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  outline: none;
+}
+.selectInput:focus {
+  border-color: var(--aws-orange);
+}

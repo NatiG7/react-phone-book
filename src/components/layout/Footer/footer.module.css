@@ -1,0 +1,13 @@
+.footer {
+  padding: 1rem;
+  background-color: var(--bg-panel);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  margin-top: auto;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--aws-orange); /* Orange accent for footer */
+}

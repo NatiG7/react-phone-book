@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65); /* Dark dimming */
+  backdrop-filter: blur(0.4px);            /* Cyberpunk blur */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Above everything */
+  padding: 20px;  /* Prevents touching screen edges on mobile */
+}
+
+.modal {
+  background: var(--bg-panel); /* Dark Grey */
+  border: 1px solid var(--htb-green); /* Green Border */
+  box-shadow: 0 0 25px rgba(159, 239, 0, 0.25); /* Green Glow */
+  border-radius: 4px;
+  
+  /* Size & Scroll Logic */
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh; /* Never be taller than 90% of screen */
+  overflow-y: auto; /* Scroll if content is too tall */
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0,0,0,0.2); /* Slightly darker header */
+  position: sticky; /* Keeps header at top while scrolling */
+  top: 0;
+}
+
+.header h3 {
+  margin: 0;
+  color: var(--htb-green);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.content {
+  padding: 20px; /* Space inside the body */
+}

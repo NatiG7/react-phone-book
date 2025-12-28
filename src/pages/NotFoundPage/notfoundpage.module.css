@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.errorCode {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #ff4444;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.message {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.homeLink {
+  margin-top: 30px;
+  color: var(--htb-green);
+  text-decoration: none;
+  border: 1px solid var(--htb-green);
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+
+.homeLink:hover {
+  background: var(--htb-green);
+  color: black;
+  box-shadow: 0 0 15px var(--htb-green);
+}

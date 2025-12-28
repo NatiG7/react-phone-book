@@ -1,0 +1,74 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- Top Navigation / Folder Tabs --- */
+.folderNav {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  overflow-x: auto;
+}
+
+.folderTab {
+  background: rgba(20, 23, 31, 0.5);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 12px 25px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.folderTab:hover {
+  border-color: var(--aws-orange);
+  color: var(--text-main);
+}
+
+.activeTab {
+  background: rgba(159, 239, 0, 0.1);
+  border-color: var(--htb-green);
+  color: var(--htb-green);
+  box-shadow: 0 -2px 10px rgba(159, 239, 0, 0.1);
+}
+
+/* --- Main Content Area --- */
+.contentArea {
+  min-height: 400px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Decorative "Path" bar */
+.pathBar {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--aws-orange);
+  font-family: monospace;
+}
+
+.countBadge {
+  background: #333;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.activeTab .countBadge {
+  background: var(--htb-green);
+  color: black;
+}
