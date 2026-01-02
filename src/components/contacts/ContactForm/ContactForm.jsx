@@ -3,7 +3,7 @@ import { isValidEmail, isValidName, isValidPhone } from '../../../utils/validato
 import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
 import Select from '../../common/Select/Select';
-import styles from './contactForm.module.css';
+import styles from './contactform.module.css';
 
 // Defined outside to prevent re-creation on every render
 const DEFAULT_STATE = {

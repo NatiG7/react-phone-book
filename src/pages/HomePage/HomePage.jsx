@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import styles from './homePage.module.css';
+import styles from './homepage.module.css';
 
 const HomePage = () => {
   const { user } = useAuth();

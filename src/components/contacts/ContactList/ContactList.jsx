@@ -1,5 +1,5 @@
 import ContactCard from '../ContactCard/ContactCard';
-import styles from './contactList.module.css';
+import styles from './contactlist.module.css';
 
 const ContactList = ({ contacts, onToggleFavorite, onEdit, onDelete, isAdmin }) => {
   if (contacts.length === 0) {
