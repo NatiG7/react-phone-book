@@ -5,7 +5,6 @@ import Input from '../../common/Input/Input';
 import Select from '../../common/Select/Select';
 import styles from './contactform.module.css';
 
-// Defined outside to prevent re-creation on every render
 const DEFAULT_STATE = {
     name: '',
     phone: '',
@@ -19,7 +18,6 @@ const ContactForm = ({ initialData, onSave, onCancel }) => {
     const [formData, setFormData] = useState(initialData || DEFAULT_STATE);
     const [errors, setErrors] = useState({});
 
-    // Fix: Use setTimeout to avoid "Synchronous State Update" warning
     useEffect(() => {
         const timer = setTimeout(() => {
             if (initialData) {
