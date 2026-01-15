@@ -1,5 +1,5 @@
 import Button from '../../common/Button/Button';
-import styles from './contactCard.module.css';
+import styles from './contactcard.module.css';
 
 const ContactCard = ({ contact, isFavorite, onToggleFavorite, onEdit, onDelete, isAdmin }) => {
   return (

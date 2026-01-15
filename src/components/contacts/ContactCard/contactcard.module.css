@@ -47,7 +47,7 @@
 
 .favBtn.active {
   background: #FFD700;
-  color: white;
+  color: rgb(65, 60, 60);
 }
 
 .actions {
