@@ -52,6 +52,30 @@
   position: relative;
 }
 
+.searchBox {
+  flex: 2;
+  min-width: 250px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  border: 1px solid var(--border-color);
+  color: var(--htb-green);
+  font-family: var(--font-family);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.searchInput:focus {
+  border-color: var(--aws-orange);
+  box-shadow: 0 0 10px rgba(255, 153, 0, 0.2);
+}
+
 /* Decorative "Path" bar */
 .pathBar {
   margin-bottom: 20px;

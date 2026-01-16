@@ -28,30 +28,30 @@ const PhoneBookPage = () => {
     setIsModalOpen(true);
   };
 
-  const handleEdit = (contact) => {
+  const handleEdit = contact => {
     setEditingContact(contact);
     setIsModalOpen(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     if (window.confirm('WARNING: Deletion is permanent. Proceed?')) {
       const updated = contacts.filter(c => c.id !== id);
       setContacts(updated);
     }
   };
 
-  const handleToggleFavorite = (id) => {
+  const handleToggleFavorite = id => {
     const updated = contacts.map(c =>
-      c.id === id ? { ...c, isFavorite: !c.isFavorite } : c
+      c.id === id ? { ...c, isFavorite: !c.isFavorite } : c,
     );
     setContacts(updated);
   };
 
-  const handleSave = (formData) => {
+  const handleSave = formData => {
     if (editingContact) {
       // UPDATE
       const updated = contacts.map(c =>
-        c.id === editingContact.id ? { ...c, ...formData } : c
+        c.id === editingContact.id ? { ...c, ...formData } : c,
       );
       setContacts(updated);
     } else {
@@ -59,7 +59,7 @@ const PhoneBookPage = () => {
       const newContact = {
         ...formData,
         id: crypto.randomUUID(),
-        isFavorite: false
+        isFavorite: false,
       };
       setContacts([...contacts, newContact]);
     }
@@ -73,10 +73,11 @@ const PhoneBookPage = () => {
 
     if (search.trim()) {
       const lowerSearch = search.toLowerCase();
-      result = result.filter(c =>
-        c.name.toLowerCase().includes(lowerSearch) ||
-        c.phone.includes(lowerSearch) ||
-        c.email.toLowerCase().includes(lowerSearch)
+      result = result.filter(
+        c =>
+          c.name.toLowerCase().includes(lowerSearch) ||
+          c.phone.includes(lowerSearch) ||
+          c.email.toLowerCase().includes(lowerSearch),
       );
     }
 
@@ -91,7 +92,6 @@ const PhoneBookPage = () => {
     return result;
   }, [contacts, search, sortBy]);
 
-
   return (
     <div className={styles.container}>
       {/* Command Bar */}
@@ -100,29 +100,29 @@ const PhoneBookPage = () => {
 
         <div className={styles.controls}>
           <div className={styles.searchBox}>
-            <Input 
-              name="Search" 
-              value={search} 
-              onChange={(e) => setSearch(e.target.value)} 
-              placeholder="> Search by Name, Phone or Email..." 
+            <Input
+              name='Search'
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder='> Search by Name, Phone or Email...'
             />
           </div>
 
           {/* MODULARITY FIX: Replaced raw <select> with <Select /> component */}
-          <div className={styles.sortWrapper}> 
+          <div className={styles.sortWrapper}>
             <Select
-              name="sort"
+              name='sort'
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              onChange={e => setSortBy(e.target.value)}
               options={[
                 { value: 'name-asc', label: 'Sort A-Z' },
-                { value: 'name-desc', label: 'Sort Z-A' }
+                { value: 'name-desc', label: 'Sort Z-A' },
               ]}
             />
           </div>
 
           {isAdmin && (
-            <Button onClick={handleAdd} variant="primary">
+            <Button onClick={handleAdd} variant='primary'>
               + Add Record
             </Button>
           )}
@@ -146,7 +146,7 @@ const PhoneBookPage = () => {
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={editingContact ? "EDITING RECORD //" : "NEW ENTRY //"}
+        title={editingContact ? 'EDITING RECORD //' : 'NEW ENTRY //'}
       >
         <ContactForm
           initialData={editingContact}

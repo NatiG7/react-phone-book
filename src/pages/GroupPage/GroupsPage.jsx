@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Modal from '../../components/common/Modal/Modal';
 import ContactForm from '../../components/contacts/ContactForm/ContactForm';
 import ContactList from '../../components/contacts/ContactList/ContactList';
+import Input from '../../components/common/Input/Input';
 import { useAuth } from '../../hooks/useAuth';
 import { useData } from '../../hooks/useData';
 import styles from './grouppage.module.css';
@@ -12,7 +13,8 @@ const GroupsPage = () => {
   const { user } = useAuth();
   const { contacts, setContacts } = useData();
   const [activeGroup, setActiveGroup] = useState('Friends');
-  
+  const [search, setSearch] = useState('');
+
   // Edit logic reuse
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingContact, setEditingContact] = useState(null);
@@ -23,27 +25,29 @@ const GroupsPage = () => {
   const filteredContacts = contacts.filter(c => c.group === activeGroup);
 
   // --- REUSED HANDLERS ---
-  
-  const handleEdit = (contact) => {
+
+  const handleEdit = contact => {
     setEditingContact(contact);
     setIsModalOpen(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     if (window.confirm('WARNING: Confirm deletion from database?')) {
       setContacts(contacts.filter(c => c.id !== id));
     }
   };
 
-  const handleToggleFavorite = (id) => {
-    setContacts(contacts.map(c => 
-      c.id === id ? { ...c, isFavorite: !c.isFavorite } : c
-    ));
+  const handleToggleFavorite = id => {
+    setContacts(
+      contacts.map(c =>
+        c.id === id ? { ...c, isFavorite: !c.isFavorite } : c,
+      ),
+    );
   };
 
-  const handleSave = (formData) => {
-    const updated = contacts.map(c => 
-      c.id === editingContact.id ? { ...c, ...formData } : c
+  const handleSave = formData => {
+    const updated = contacts.map(c =>
+      c.id === editingContact.id ? { ...c, ...formData } : c,
     );
     setContacts(updated);
     setIsModalOpen(false);
@@ -51,20 +55,21 @@ const GroupsPage = () => {
 
   return (
     <div className={styles.container}>
-      
       {/* Folder Tabs Navigation */}
       <div className={styles.folderNav}>
         {GROUPS.map(group => {
           // Count items in this group
           const count = contacts.filter(c => c.group === group).length;
-          
+
           return (
-            <button 
+            <button
               key={group}
-              className={`${styles.folderTab} ${activeGroup === group ? styles.activeTab : ''}`}
+              className={`${styles.folderTab} ${
+                activeGroup === group ? styles.activeTab : ''
+              }`}
               onClick={() => setActiveGroup(group)}
             >
-              📂 {group} 
+              📂 {group}
               <span className={styles.countBadge}>{count}</span>
             </button>
           );
@@ -76,8 +81,16 @@ const GroupsPage = () => {
         <div className={styles.pathBar}>
           root/home/{user?.username}/contacts/{activeGroup.toLowerCase()}/
         </div>
+        <div className={styles.searchBox}>
+          <Input
+            name='Search'
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder='> Search by Name, Phone or Email...'
+          />
+        </div>
 
-        <ContactList 
+        <ContactList
           contacts={filteredContacts}
           onToggleFavorite={handleToggleFavorite}
           onEdit={handleEdit}
@@ -92,13 +105,12 @@ const GroupsPage = () => {
         onClose={() => setIsModalOpen(false)}
         title={`EDITING // ${editingContact?.name.toUpperCase()}`}
       >
-        <ContactForm 
+        <ContactForm
           initialData={editingContact}
           onSave={handleSave}
           onCancel={() => setIsModalOpen(false)}
         />
       </Modal>
-
     </div>
   );
 };
