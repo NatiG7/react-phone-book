@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Modal from '../../components/common/Modal/Modal';
 import ContactForm from '../../components/contacts/ContactForm/ContactForm';
 import ContactList from '../../components/contacts/ContactList/ContactList';
-import Input from '../../components/common/Input/Input';
 import { useAuth } from '../../hooks/useAuth';
 import { useData } from '../../hooks/useData';
 import styles from './grouppage.module.css';
@@ -13,7 +12,6 @@ const GroupsPage = () => {
   const { user } = useAuth();
   const { contacts, setContacts } = useData();
   const [activeGroup, setActiveGroup] = useState('Friends');
-  const [search, setSearch] = useState('');
 
   // Edit logic reuse
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,15 +79,6 @@ const GroupsPage = () => {
         <div className={styles.pathBar}>
           root/home/{user?.username}/contacts/{activeGroup.toLowerCase()}/
         </div>
-        <div className={styles.searchBox}>
-          <Input
-            name='Search'
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder='> Search by Name, Phone or Email...'
-          />
-        </div>
-
         <ContactList
           contacts={filteredContacts}
           onToggleFavorite={handleToggleFavorite}

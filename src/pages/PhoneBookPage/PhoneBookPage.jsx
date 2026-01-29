@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import Button from '../../components/common/Button/Button'; // Fixed Path
-import Input from '../../components/common/Input/Input'; // Fixed Path
 import Modal from '../../components/common/Modal/Modal'; // Fixed Path
 import Select from '../../components/common/Select/Select'; // NEW: Imported Select
 import ContactForm from '../../components/contacts/ContactForm/ContactForm';
@@ -14,7 +13,6 @@ const PhoneBookPage = () => {
   const { contacts, setContacts } = useData();
 
   // Local UI State
-  const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('name-asc');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingContact, setEditingContact] = useState(null);
@@ -66,20 +64,10 @@ const PhoneBookPage = () => {
     setIsModalOpen(false);
   };
 
-  // --- FILTERS & SORTING ---
+  // --- SORTING ---
 
   const processedContacts = useMemo(() => {
     let result = [...contacts];
-
-    if (search.trim()) {
-      const lowerSearch = search.toLowerCase();
-      result = result.filter(
-        c =>
-          c.name.toLowerCase().includes(lowerSearch) ||
-          c.phone.includes(lowerSearch) ||
-          c.email.toLowerCase().includes(lowerSearch),
-      );
-    }
 
     result.sort((a, b) => {
       const nameA = a.name.toLowerCase();
@@ -90,7 +78,7 @@ const PhoneBookPage = () => {
     });
 
     return result;
-  }, [contacts, search, sortBy]);
+  }, [contacts, sortBy]);
 
   return (
     <div className={styles.container}>
@@ -99,16 +87,6 @@ const PhoneBookPage = () => {
         <h2 className={styles.title}>Directory Protocol</h2>
 
         <div className={styles.controls}>
-          <div className={styles.searchBox}>
-            <Input
-              name='Search'
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              placeholder='> Search by Name, Phone or Email...'
-            />
-          </div>
-
-          {/* MODULARITY FIX: Replaced raw <select> with <Select /> component */}
           <div className={styles.sortWrapper}>
             <Select
               name='sort'
@@ -122,7 +100,7 @@ const PhoneBookPage = () => {
           </div>
 
           {isAdmin && (
-            <Button onClick={handleAdd} variant='primary'>
+            <Button onClick={handleAdd} variant='primary' className={styles.addBtn}>
               + Add Record
             </Button>
           )}
