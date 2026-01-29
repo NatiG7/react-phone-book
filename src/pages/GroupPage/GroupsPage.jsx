@@ -51,34 +51,38 @@ const GroupsPage = () => {
     setIsModalOpen(false);
   };
 
-  return (
+return (
     <div className={styles.container}>
-      {/* Folder Tabs Navigation */}
-      <div className={styles.folderNav}>
-        {GROUPS.map(group => {
-          // Count items in this group
-          const count = contacts.filter(c => c.group === group).length;
+      
+      {/* --- NEW HEADER PANEL (Matches PhoneBookPage) --- */}
+      <div className={styles.headerPanel}>
+        <h2 className={styles.title}>GROUP PROTOCOLS</h2>
 
-          return (
-            <button
-              key={group}
-              className={`${styles.folderTab} ${
-                activeGroup === group ? styles.activeTab : ''
-              }`}
-              onClick={() => setActiveGroup(group)}
-            >
-              📂 {group}
-              <span className={styles.countBadge}>{count}</span>
-            </button>
-          );
-        })}
+        {/* Tabs are now the "Controls" inside the header */}
+        <div className={styles.folderNav}>
+          {GROUPS.map(group => {
+            const count = contacts.filter(c => c.group === group).length;
+            return (
+              <button
+                key={group}
+                className={`${styles.folderTab} ${activeGroup === group ? styles.activeTab : ''}`}
+                onClick={() => setActiveGroup(group)}
+              >
+                <span>{group}</span>
+                <span className={styles.countBadge}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* The Path Bar sits at the bottom of the header now */}
+        <div className={styles.pathBar}>
+          |{user.role}| root/home/{user?.username}/groups/{activeGroup.toLowerCase()}/$ _
+        </div>
       </div>
 
-      {/* Main Content */}
+      {/* --- Main Content --- */}
       <div className={styles.contentArea}>
-        <div className={styles.pathBar}>
-          root/home/{user?.username}/contacts/{activeGroup.toLowerCase()}/
-        </div>
         <ContactList
           contacts={filteredContacts}
           onToggleFavorite={handleToggleFavorite}
@@ -88,7 +92,6 @@ const GroupsPage = () => {
         />
       </div>
 
-      {/* Reused Edit Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

@@ -4,31 +4,53 @@
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-/* --- Top Navigation / Folder Tabs --- */
+/* --- NEW: Header Panel (Matches PhoneBookPage) --- */
+.headerPanel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--htb-green);
+  padding: 20px;
+  margin-bottom: 20px; /* Space before the list */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 0 5px rgba(159, 239, 0, 0.3);
+}
+
+.title {
+  margin: 0;
+  color: var(--text-main);
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+}
+
+/* --- Folder Tabs (Now inside the header) --- */
 .folderNav {
   display: flex;
-  gap: 10px;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 10px;
+  gap: 15px;
   overflow-x: auto;
+  padding-bottom: 5px; /* Scrollbar breathing room */
 }
 
 .folderTab {
-  background: rgba(20, 23, 31, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border-color);
   color: var(--text-muted);
-  padding: 12px 25px;
+  padding: 10px 20px;
   cursor: pointer;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-family);
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  min-width: 120px; /* consistent sizing */
+  justify-content: center;
 }
 
 .folderTab:hover {
@@ -40,48 +62,7 @@
   background: rgba(159, 239, 0, 0.1);
   border-color: var(--htb-green);
   color: var(--htb-green);
-  box-shadow: 0 -2px 10px rgba(159, 239, 0, 0.1);
-}
-
-/* --- Main Content Area --- */
-.contentArea {
-  min-height: 400px;
-  padding: 20px;
-  border: 1px solid var(--border-color);
-  background: rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-
-.searchBox {
-  flex: 2;
-  min-width: 250px;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 12px;
-  background: #000;
-  border: 1px solid var(--border-color);
-  color: var(--htb-green);
-  font-family: var(--font-family);
-  outline: none;
-}
-
-.searchInput::placeholder {
-  color: var(--text-muted);
-}
-
-.searchInput:focus {
-  border-color: var(--aws-orange);
-  box-shadow: 0 0 10px rgba(255, 153, 0, 0.2);
-}
-
-/* Decorative "Path" bar */
-.pathBar {
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-  color: var(--aws-orange);
-  font-family: monospace;
+  box-shadow: 0 0 10px rgba(159, 239, 0, 0.15);
 }
 
 .countBadge {
@@ -89,10 +70,28 @@
   color: white;
   padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 .activeTab .countBadge {
   background: var(--htb-green);
   color: black;
+  font-weight: bold;
+}
+
+/* --- Path Bar (Styled like a terminal readout) --- */
+.pathBar {
+  font-size: 0.85rem;
+  color: var(--aws-orange);
+  font-family: monospace;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  opacity: 0.9;
+}
+
+/* --- Main Content --- */
+.contentArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
