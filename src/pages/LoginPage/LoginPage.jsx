@@ -4,6 +4,13 @@ import Input from '../../components/common/Input/Input';
 import { useAuth } from '../../hooks/useAuth';
 import styles from './loginpage.module.css';
 
+/**
+ * The login page component handling user authentication.
+ * Includes form validation, password visibility toggles, and navigation upon success.
+ *
+ * @returns {JSX.Element} The rendered login page.
+ */
+
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     username: '',

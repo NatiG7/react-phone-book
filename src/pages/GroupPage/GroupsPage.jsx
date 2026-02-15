@@ -8,6 +8,13 @@ import styles from './grouppage.module.css';
 
 const GROUPS = ['Friends', 'Family', 'Work', 'Other'];
 
+/**
+ * Page component for displaying contacts filtered by group categories.
+ * Allows switching between defined groups and managing contacts within them.
+ *
+ * @returns {JSX.Element} The rendered groups page.
+ */
+
 const GroupsPage = () => {
   const { user } = useAuth();
   const { contacts, setContacts } = useData();

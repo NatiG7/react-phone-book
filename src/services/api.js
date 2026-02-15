@@ -1,4 +1,10 @@
-// Service to handle API requests
+/**
+ * Fetches a list of random users from an external API and transforms them 
+ * into the application's contact schema.
+ * * Target API: https://randomuser.me/api/
+ * * @returns {Promise<Array<Object>>} A promise that resolves to an array of formatted contact objects. 
+ * Returns an empty array if the fetch fails.
+ */
 export const fetchRandomContacts = async () => {
   try {
     // Fetch 10 random users

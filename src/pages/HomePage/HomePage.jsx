@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import styles from './homepage.module.css';
 
+/**
+ * The landing page component featuring a simulated terminal interface.
+ * Displays available application modules and system status based on user role.
+ *
+ * @returns {JSX.Element} The rendered home page.
+ */
+
 const HomePage = () => {
   const { user } = useAuth();
   const [text, setText] = useState('');

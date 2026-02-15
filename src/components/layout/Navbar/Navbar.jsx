@@ -3,6 +3,14 @@ import { useAuth } from '../../../hooks/useAuth';
 import Button from '../../common/Button/Button';
 import styles from './navbar.module.css';
 
+/**
+ * The main navigation bar component.
+ * Handles application routing links and user session termination.
+ * Displays the current user's name and role.
+ *
+ * @returns {JSX.Element} The rendered navigation bar.
+ */
+
 const Navbar = () => {
   const { logout, user } = useAuth();
   const navigate = useNavigate();

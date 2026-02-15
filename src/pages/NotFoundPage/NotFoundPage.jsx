@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
 import styles from '../NotFoundPage/notfoundpage.module.css';
 
+/**
+ * 404 Error page component displayed when a route is not found.
+ * Provides a link to return to the home page.
+ *
+ * @returns {JSX.Element} The rendered 404 page.
+ */
+
 const NotFoundPage = () => {
   return (
     <div className={styles.container}>

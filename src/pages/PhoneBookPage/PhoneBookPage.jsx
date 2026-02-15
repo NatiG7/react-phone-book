@@ -8,6 +8,14 @@ import { useAuth } from '../../hooks/useAuth';
 import { useData } from '../../hooks/useData';
 import styles from './phonebookpage.module.css';
 
+/**
+ * The main phone book directory page.
+ * Displays a list of all contacts with sorting, CRUD operations, and favorite toggling.
+ * Admin users have additional privileges to add, edit, and delete records.
+ *
+ * @returns {JSX.Element} The rendered phone book page.
+ */
+
 const PhoneBookPage = () => {
   const { user } = useAuth();
   const { contacts, setContacts } = useData();
