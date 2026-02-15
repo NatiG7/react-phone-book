@@ -1,23 +1,46 @@
-import { useState } from 'react';
-import Button from '../../common/Button/Button';
-import styles from './contactcard.module.css';
+import { useState } from "react";
+import Button from "../../common/Button/Button";
+import styles from "./contactcard.module.css";
 
-const ContactCard = ({ contact, isFavorite, onToggleFavorite, onEdit, onDelete, isAdmin }) => {
+/**
+ * ContactCard Component
+ * * Displays an individual contact's information.
+ * Supports an expanded state to show more details (Phone, Email) and actions.
+ * * @param {Object} contact - The contact data object.
+ * @param {boolean} isFavorite - Current favorite status of the contact.
+ * @param {Function} onToggleFavorite - Handler to toggle favorite status.
+ * @param {Function} onEdit - Handler to edit the contact (Admin only).
+ * @param {Function} onDelete - Handler to delete the contact (Admin only).
+ * @param {boolean} isAdmin - Flag to determine if admin controls are displayed.
+ */
+const ContactCard = ({
+  contact,
+  isFavorite,
+  onToggleFavorite,
+  onEdit,
+  onDelete,
+  isAdmin,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div 
-      className={`${styles.card} ${isExpanded ? styles.expanded : ''}`}
+    <div
+      className={`${styles.card} ${isExpanded ? styles.expanded : ""}`}
       onClick={() => setIsExpanded(!isExpanded)}
       title="Click to toggle details"
     >
       <div className={styles.header}>
-        <img src={contact.picture} alt={contact.name} className={styles.image} />
+        <img
+          src={contact.picture}
+          alt={contact.name}
+          className={styles.image}
+        />
         <div className={styles.headerText}>
           <h3 className={styles.name}>{contact.name}</h3>
           {!isExpanded && (
             <span className={styles.miniHint}>
-               {isFavorite && <span className={styles.star}>★</span>} Click to expand
+              {isFavorite && <span className={styles.star}>★</span>} Click to
+              expand
             </span>
           )}
         </div>
@@ -34,13 +57,16 @@ const ContactCard = ({ contact, isFavorite, onToggleFavorite, onEdit, onDelete, 
           </div>
 
           {/* Action Area - Stop propagation so clicking buttons doesn't close the card */}
-          <div className={styles.actionArea} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles.actionArea}
+            onClick={(e) => e.stopPropagation()}
+          >
             <Button
               variant="secondary"
-              className={`${styles.favBtn} ${isFavorite ? styles.active : ''}`}
+              className={`${styles.favBtn} ${isFavorite ? styles.active : ""}`}
               onClick={() => onToggleFavorite(contact.id)}
             >
-              {isFavorite ? '★ PRIORITY ACTIVE' : '☆ MARK PRIORITY'}
+              {isFavorite ? "★ PRIORITY ACTIVE" : "☆ MARK PRIORITY"}
             </Button>
 
             {isAdmin && (
@@ -58,9 +84,7 @@ const ContactCard = ({ contact, isFavorite, onToggleFavorite, onEdit, onDelete, 
       )}
 
       {/* Visual Toggle Arrow */}
-      <div className={styles.toggleIndicator}>
-        {isExpanded ? '▲' : '▼'}
-      </div>
+      <div className={styles.toggleIndicator}>{isExpanded ? "▲" : "▼"}</div>
     </div>
   );
 };
